@@ -1,0 +1,45 @@
+﻿@model ShoppingCartViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutStore.cshtml";
+    ViewData["Title"] = "Shopping Cart";
+}
+<h4>Shopping Cart</h4>
+
+<table class="table">
+  
+    <tbody>
+        @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
+        {
+        <tr>
+            <td>
+                <img src="@("~/images/" + item.Product.ImagePath)" asp-append-version="true" width="50" height="50" />
+            </td>
+            <td>
+                @item.Product.Name
+            </td>
+            <td>
+                @item.Quantity
+            </td>
+            <td>
+                @item.Product.SellPrice.Value.ToString("0.00")
+            </td>
+            <td>
+                @((item.Product.SellPrice.Value * item.Quantity).ToString("0.00"))
+            </td>
+            <td>
+                <a asp-action="RemoveFromShoppingCart" asp-controller="ShoppingCart" asp-route-productId="@item.Product.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+
+            <td>Total: @Model.ShoppingCartTotal.ToString("F") </td>
+            <td><a asp-action="Checkout" asp-controller="Order" class="btn btn-success">Check Out</a></td>
+        </tr>
+
+    </tfoot>
+        
+</table>

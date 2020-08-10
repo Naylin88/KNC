@@ -1,0 +1,69 @@
+﻿
+@model IEnumerable<InitCMS.Models.Product>
+@{
+    Layout = "~/Views/Shared/_LayoutStore.cshtml";
+    ViewData["Title"] = "Init Store";
+}
+
+<input id="myInput" class="form-control" type="text" placeholder="Search by Name ..." />
+<br />
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-6 mb-4 list-item" data-role="name">
+            <div class="card h-100">
+                <a asp-action="Details" asp-route-id="@item.Id"><img class="card-img-top img-fluid" src="@("~/images/" + item.ImagePath)" asp-append-version="true"></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="#">@Html.DisplayFor(modelItem => item.Name)</a>
+                    </h4>
+                    <h5>@Html.DisplayFor(modelItem => item.SellPrice) Ks</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.PCode)</p>
+                </div>
+                <div class="card-footer">
+                    <a asp-action="AddToShoppingCart" asp-route-productId="@item.Id" asp-controller="ShoppingCart" class="btn btn-success"><i class="fa fa-cart-plus mr-2"></i> Add to cart</a>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+<!-- /.row -->
+<div id="pagination-container"></div>
+
+@section scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--Pagination -->
+    <script src="https://cdn.tutorialjinni.com/simplePagination.js/1.6/jquery.simplePagination.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $('div[data-role = "name"]').filter(function () {
+                    $(this).toggle($(this).find('h4').text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+
+            var items = $('.list-item');
+            var numItems = items.length;
+            var perPage = 8;
+            items.slice(perPage).hide();
+
+            $("#pagination-container").pagination({
+                items: numItems,
+                itemsOnPage: perPage,
+                prevText: "<",
+                nextText: ">",
+                onPageClick: function (pageNumber) {
+                    var showFrom = perPage * (pageNumber - 1);
+                    var showTo = showFrom + perPage;
+                    items.hide().slice(showFrom, showTo).show();
+                }
+
+            });
+        });
+
+    </script>
+}
