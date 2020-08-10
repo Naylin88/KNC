@@ -4,7 +4,7 @@
 
 @{
     Layout = "~/Views/Shared/_LayoutStore.cshtml";
-    ViewData["Title"] = "Init Store";
+    ViewData["Title"] = "K&C Electronic Store";
 }
 
 <div class="row">
@@ -36,35 +36,33 @@
     <!-- /.col-lg-3 -->
 
     <div class="col-lg-9">
-
-       
+        <!--
     @await Html.PartialAsync("_PartialView")
-      
-        
-        
+      -->
+
         <div class="row">
             @foreach (Product item in Model.products)
             {
-                <div class="col-lg-4 col-md-6 mb-4 list-item" data-role="name">
-                    <div class="card h-100">
+            <div class="col-lg-4 col-md-6 mb-4 list-item" data-role="name">
+                <div class="card h-100">
 
-                        <a asp-action="Details" asp-route-id="@item.Id"><img class="card-img-top img-fluid" src="@("~/images/" + item.ImagePath)" asp-append-version="true"></a>
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="#">@Html.DisplayFor(modelItem => item.Name)</a>
-                            </h4>
-                            <h5>@Html.DisplayFor(modelItem => item.SellPrice) Ks</h5>
-                            <p class="card-text">@Html.DisplayFor(modelItem => item.PCode)</p>
-
-                        </div>
-                        <div class="card-footer">
-                            <a asp-action="AddToShoppingCart" asp-route-productId="@item.Id" asp-controller="ShoppingCart" class="btn btn-success"><i class="fa fa-cart-plus mr-2"></i> Add to cart</a>
-                        </div>
+                    <a asp-action="Details" asp-route-id="@item.Id"><img class="card-img-top img-fluid" src="@("~/images/" + item.ImagePath)" asp-append-version="true"></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">@Html.DisplayFor(modelItem => item.Name)</a>
+                        </h4>
+                        <h5>@Html.DisplayFor(modelItem => item.SellPrice) Ks</h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.PCode)</p>
 
                     </div>
+                    <div class="card-footer">
+                        <a asp-action="AddToShoppingCart" asp-route-productId="@item.Id" asp-controller="ShoppingCart" class="btn btn-success"><i class="fa fa-cart-plus mr-2"></i> Add to cart</a>
+                    </div>
+
                 </div>
+            </div>
             }
-            
+
         </div>
         <!-- /.row -->
         <div id="pagination-container"></div>
