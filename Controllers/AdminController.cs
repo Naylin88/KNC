@@ -47,8 +47,7 @@ namespace InitCMS.Controllers
             ViewData["Email"] = ur.Email.ToString();
             return RedirectToAction("Index", "Home");
         }
-
-        [Authorize]
+      
         public ActionResult Logout()
         {
             HttpContext.Session.Clear();

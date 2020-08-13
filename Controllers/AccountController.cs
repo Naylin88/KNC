@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using System.Net.Mail;
 using System.Threading.Tasks;
-using InitCMS.Models;
 using InitCMS.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.EntityFrameworkCore.Update;
 using Microsoft.Extensions.Logging;
 
 namespace InitCMS.Controllers
@@ -51,10 +43,11 @@ namespace InitCMS.Controllers
                     var _token = await userManager.GenerateEmailConfirmationTokenAsync(user);
                     var confirmationLink = Url.Action("ConfirmEmail", "Account",
                         new { email = user.Email, token = _token }, Request.Scheme);
-                    
-                    _logger.Log(LogLevel.Warning, confirmationLink);
+
                     //Send email to client
-                    SendEmail(user.Email, confirmationLink);
+                    RegisterEmail(user.Email, confirmationLink);
+                    _logger.Log(LogLevel.Warning, confirmationLink);
+                    
 
                   //  var message = new Message(new string[] { user.Email }, "Confirmation email link", confirmationLink, null);
                    // await _emailSender.SendEmailAsync(message);
@@ -72,20 +65,20 @@ namespace InitCMS.Controllers
         }
         //Sending email 
         // To use this feature, Please on Less Secure app on gmailsetting
-        public void SendEmail(string email, string urlLink)
+        public void RegisterEmail(string email, string urlLink)
         {
-            var mailMessage = new MailMessage("naylinoo2009@gmail.com" , email);
-            mailMessage.Subject = "Init Store Email Confirmation";
+            var mailMessage = new MailMessage("postmaster@kncelectronicstore.com", email);
+            mailMessage.Subject = "K&C Electronic Store Email Confirmation";
             mailMessage.Body = "Hi, Please click on the Link for Eamil Confirmation " + urlLink;
 
-            var smtpClient = new SmtpClient("smtp.gmail.com", 587);
+            var smtpClient = new SmtpClient("mail.kncelectronicstore.com", 25);
             smtpClient.UseDefaultCredentials = false;
             smtpClient.Credentials = new System.Net.NetworkCredential()
             { 
-            UserName = "naylinoo2009@gmail.com",
-            Password = "******"           
+            UserName = "postmaster@kncelectronicstore.com",
+            Password = "N308@gmail.com"           
             };
-            smtpClient.EnableSsl = true;
+            smtpClient.EnableSsl = false;
             smtpClient.Send(mailMessage);
         }
 
@@ -195,15 +188,31 @@ namespace InitCMS.Controllers
 
                     var passwordResetLink = Url.Action("ResetPassword", "Account", new {email = model.Email, token = _token}, Request.Scheme);
 
+                    ResetEmail(model.Email, passwordResetLink);
                     _logger.Log(LogLevel.Warning, passwordResetLink);
-                    _logger.LogInformation("This is log info");
-                    _logger.Log(LogLevel.Warning,"this is log");
+                   
                     return View("ForgotPasswordConfirmation");
 
                 }
                 return View("ForgotPasswordConfirmation");
             }
             return View(model);
+        }
+        public void ResetEmail(string email, string urlLink)
+        {
+            var mailMessage = new MailMessage("postmaster@kncelectronicstore.com", email);
+            mailMessage.Subject = "K&C Electronic Store Password Reset";
+            mailMessage.Body = "Hi, Please click on the Link for Password Reset " + urlLink;
+
+            var smtpClient = new SmtpClient("mail.kncelectronicstore.com", 25);
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.Credentials = new System.Net.NetworkCredential()
+            {
+                UserName = "postmaster@kncelectronicstore.com",
+                Password = "N308@gmail.com"
+            };
+            smtpClient.EnableSsl = false;
+            smtpClient.Send(mailMessage);
         }
         //REset password
         [HttpGet]

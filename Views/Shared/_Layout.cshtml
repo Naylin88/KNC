@@ -18,11 +18,11 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav">
                         @if (string.IsNullOrEmpty(Context.Session.GetString("SessionEmail")))
                         {
-                           
+
 
                         }
                         else
@@ -51,20 +51,23 @@
 
 
                     </ul>
-                
+                   
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            @if (string.IsNullOrEmpty(Context.Session.GetString("SessionEmail")))
+                            {
+                                @Html.ActionLink("Login", "Login", "Admin")
+                            }
+                            else
+                            {
+                                @ViewData["Email"] @Html.ActionLink("Logout", "Logout", "Admin")
+                            }
+                        </li>
+                    </ul>
+                    
                 </div>
                 
-                <div class="navbar-nav ml-auto">
-                    @if (string.IsNullOrEmpty(Context.Session.GetString("SessionEmail")))
-                    {
-                        @Html.ActionLink("Login", "Login", "Admin")
-
-                    }
-                    else
-                    {
-                        @ViewData["Email"] @Html.ActionLink("Logout", "Logout", "Admin")
-                    }
-                </div>
+               
             </div>
         </nav>
     </header>
