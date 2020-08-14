@@ -65,6 +65,11 @@ namespace InitCMS.Controllers
 
             return View(product);
         }
+        //Contact
+        public ActionResult Contact()
+        {
+            return View();
+        }
 
 
     }

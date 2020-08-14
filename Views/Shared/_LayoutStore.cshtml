@@ -26,6 +26,9 @@
                     <div class="navbar-nav">
                         <a asp-controller="Store" asp-action="Index" class="nav-item nav-link active">Home</a>
                     </div>
+                    <div class="navbar-nav">
+                        <a asp-controller="Store" asp-action="Contact" class="nav-item nav-link active">Contact</a>
+                    </div>
                     <div class="navbar-nav ml-auto">
 
                         @await Component.InvokeAsync("ShoppingCartSummary")
@@ -63,7 +66,7 @@
         <div class="row">
             <div class="col-md-6">
                 &copy; 2020 - Powered by <font color="green">Init Myanmar</font>
-                                         <button type="button" class="btn btn-social-icon btn-facebook" style="color:blue; border-style:solid; border-color:blue; float:right;"><i class="fa fa-facebook"></i></button>
+                <a type="button" class="btn btn-social-icon btn-facebook" style="color:blue; border-style:solid; border-color:blue; float:right;" href="https://www.facebook.com/KNCES.mm/" ><i class="fa fa-facebook"></i></></a>
             </div>
         </div>
     </footer>	    
