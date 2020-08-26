@@ -30,12 +30,12 @@ namespace InitCMS.Controllers
 
         public List<Product> GetProducts() 
         {
-            List<Product> products = _context.Products.ToList();
+            List<Product> products = _context.Products.OrderBy(x => x.Name).ToList();
             return products;
         }
         public List<ProductCategory> GetProductCategories()
         {
-            List<ProductCategory> productCategories = _context.ProductCategory.ToList();
+            List<ProductCategory> productCategories = _context.ProductCategory.OrderBy(x=>x.Name).ToList();
             return productCategories;
         }
         //Get: List filter by Category
