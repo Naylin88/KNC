@@ -4,11 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using InitCMS.Models;
 using InitCMS.Data;
-using System.Collections.Generic;
 using System.Linq;
-using InitCMS.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Data;
+using System;
 
 namespace InitCMS.Controllers
 {
@@ -41,6 +42,13 @@ namespace InitCMS.Controllers
             //Order Count
             var TotalOrder = (from row in _context.OrderDetails
                               select row).Count();
+            //Today Order Count
+            var Today = DateTime.Today.Date;
+            var TodayOrder = (from o in _context.OrderDetails
+                              join od in _context.Orders on o.OrderId equals od.OrderId
+                              where od.OrderPlaced.Date == Today
+                              select o).Count();
+                              
             //Customer Count
             var Customer = _userManager.Users.Count();
 
@@ -48,6 +56,7 @@ namespace InitCMS.Controllers
             ViewBag.PCCount = PCCount;
             ViewBag.TotalOrder = TotalOrder;
             ViewBag.Customer = Customer;
+            ViewBag.TodayOrder = TodayOrder;
 
             return View();
         }

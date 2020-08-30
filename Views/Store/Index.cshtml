@@ -12,15 +12,15 @@
     <div class="col-lg-3">
 
         <!-- Search-->
-        <input id="myInput" class="form-control" type="text" placeholder="Search by Name ..." />
+        <input id="myInput" class="form-control border-warning" type="text" placeholder="Search by Name ..." />
         <br />
 
         <div class="dropdown list-group">
-            <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown">
-                Categories
+            <button class="btn border-warning dropdown-toggle" type="button" data-toggle="dropdown">
+                <strong>Categories</strong> 
                 <span class="caret"></span>
             </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu border-warning">
                 @foreach (ProductCategory item in Model.productCategories)
                 {
                     <li>
@@ -44,7 +44,7 @@
             @foreach (Product item in Model.products)
             {
             <div class="col-lg-4 col-md-6 mb-4 list-item" data-role="name">
-                <div class="card h-100">
+                <div class="card h-100 border-warning">
 
                     <a asp-action="Details" asp-route-id="@item.Id"><img class="card-img-top img-fluid" src="@("~/images/" + item.ImagePath)" asp-append-version="true"></a>
                     <div class="card-body">

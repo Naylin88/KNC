@@ -5,14 +5,14 @@
     ViewData["Title"] = "Product Category";
 }
 
-<input id="myInput" class="form-control" type="text" placeholder="Search by Name ..." />
+<input id="myInput" class="form-control border-warning" type="text" placeholder="Search by Name ..." />
 <br />
 
 <div class="row">
     @foreach (var item in Model)
     {
         <div class="col-lg-3 col-md-6 mb-4 list-item" data-role="name">
-            <div class="card h-100">
+            <div class="card h-100 border-warning">
                 <a asp-action="Details" asp-route-id="@item.Id"><img class="card-img-top img-fluid" src="@("~/images/" + item.ImagePath)" asp-append-version="true"></a>
                 <div class="card-body">
                     <h4 class="card-title">
