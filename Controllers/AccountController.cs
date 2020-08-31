@@ -1,4 +1,5 @@
-﻿using System.Net.Mail;
+﻿using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using InitCMS.ViewModel;
 using Microsoft.AspNetCore.Authorization;
@@ -25,6 +26,7 @@ namespace InitCMS.Controllers
         {
             return View();
         }
+        //Registeration
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -67,21 +69,28 @@ namespace InitCMS.Controllers
         // To use this feature, Please on Less Secure app on gmailsetting
         public void RegisterEmail(string email, string urlLink)
         {
-            var mailMessage = new MailMessage("postmaster@kncelectronicstore.com", email);
-            mailMessage.Subject = "K&C Electronic Store Email Confirmation";
-            mailMessage.Body = "Hi, Please click on the Link for Eamil Confirmation " + urlLink;
+           //create the mail message 
+            MailMessage mail = new MailMessage();
 
-            var smtpClient = new SmtpClient("mail.kncelectronicstore.com", 25);
-            smtpClient.UseDefaultCredentials = false;
-            smtpClient.Credentials = new System.Net.NetworkCredential()
-            { 
-            UserName = "postmaster@kncelectronicstore.com",
-            Password = "N308@gmail.com"           
-            };
-            smtpClient.EnableSsl = false;
-            smtpClient.Send(mailMessage);
+            //set the addresses 
+            mail.From = new MailAddress("postmaster@kncelectronicstore.com"); //IMPORTANT: This must be same as your smtp authentication address.
+            mail.To.Add(email);
+
+            //set the content 
+            mail.Subject = "K&C Electronic Store Email Confirmation";
+            mail.Body = "Hi, Please click on the Link for Eamil Confirmation " + urlLink;
+            //send the message 
+            SmtpClient smtp = new SmtpClient("mail.kncelectronicstore.com");
+
+            //IMPORANT:  Your smtp login email MUST be same as your FROM address. 
+            NetworkCredential Credentials = new NetworkCredential("postmaster@kncelectronicstore.com", "N308@gmail.com");
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = Credentials;
+            smtp.Port = 25;    //alternative port number is 8889
+            smtp.EnableSsl = false;
+            smtp.Send(mail);
+
         }
-
         //Confirm Email
         [HttpGet]
         [AllowAnonymous]
@@ -206,7 +215,7 @@ namespace InitCMS.Controllers
 
             var smtpClient = new SmtpClient("mail.kncelectronicstore.com", 25);
             smtpClient.UseDefaultCredentials = false;
-            smtpClient.Credentials = new System.Net.NetworkCredential()
+            smtpClient.Credentials = new NetworkCredential()
             {
                 UserName = "postmaster@kncelectronicstore.com",
                 Password = "N308@gmail.com"
