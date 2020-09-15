@@ -23,7 +23,7 @@ namespace InitCMS.Controllers
         public IActionResult Index()
         {
             dynamic dy = new ExpandoObject();
-            dy.products = GetProducts();
+            dy.products =  GetProducts();
             dy.productCategories = GetProductCategories();
             return View(dy);
         }

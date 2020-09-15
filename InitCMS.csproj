@@ -45,4 +45,37 @@
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\font\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\font\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\font\less\animated.less" />
+    <None Include="wwwroot\font\less\bordered-pulled.less" />
+    <None Include="wwwroot\font\less\core.less" />
+    <None Include="wwwroot\font\less\fixed-width.less" />
+    <None Include="wwwroot\font\less\font-awesome.less" />
+    <None Include="wwwroot\font\less\icons.less" />
+    <None Include="wwwroot\font\less\larger.less" />
+    <None Include="wwwroot\font\less\list.less" />
+    <None Include="wwwroot\font\less\mixins.less" />
+    <None Include="wwwroot\font\less\path.less" />
+    <None Include="wwwroot\font\less\rotated-flipped.less" />
+    <None Include="wwwroot\font\less\screen-reader.less" />
+    <None Include="wwwroot\font\less\stacked.less" />
+    <None Include="wwwroot\font\less\variables.less" />
+    <None Include="wwwroot\font\scss\font-awesome.scss" />
+    <None Include="wwwroot\font\scss\_animated.scss" />
+    <None Include="wwwroot\font\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\font\scss\_core.scss" />
+    <None Include="wwwroot\font\scss\_fixed-width.scss" />
+    <None Include="wwwroot\font\scss\_icons.scss" />
+    <None Include="wwwroot\font\scss\_larger.scss" />
+    <None Include="wwwroot\font\scss\_list.scss" />
+    <None Include="wwwroot\font\scss\_mixins.scss" />
+    <None Include="wwwroot\font\scss\_path.scss" />
+    <None Include="wwwroot\font\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\font\scss\_screen-reader.scss" />
+    <None Include="wwwroot\font\scss\_stacked.scss" />
+    <None Include="wwwroot\font\scss\_variables.scss" />
+  </ItemGroup>
+
 </Project>

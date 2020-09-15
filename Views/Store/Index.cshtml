@@ -45,11 +45,11 @@
 
                     <a asp-action="Details" asp-route-id="@item.Id"><img class="card-img-top img-fluid" loading="lazy" src="@("~/images/" + item.ImagePath)" asp-append-version="true"></a>
                     <div class="card-body">
-                        <h4 class="card-title">
-                            <a>@Html.DisplayFor(modelItem => item.Name)</a>
-                        </h4>
-                        <h5>@Html.DisplayFor(modelItem => item.SellPrice) Ks</h5>
-                        <p class="card-text">@Html.DisplayFor(modelItem => item.PCode)</p>
+                        <h6 class="card-title">
+                            <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+                        </h6>
+                        <p class="card-text">Code : @Html.DisplayFor(modelItem => item.PCode)</p>
+                        <h6>Price : @Html.DisplayFor(modelItem => item.SellPrice) MMK</h6>
 
                     </div>
                     <div class="card-footer">
@@ -83,7 +83,7 @@
 
             var items = $('.list-item');
             var numItems = items.length;
-            var perPage = 6;
+            var perPage = 15;
             items.slice(perPage).hide();
 
             $("#pagination-container").pagination({
