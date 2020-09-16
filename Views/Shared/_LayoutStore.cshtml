@@ -8,9 +8,8 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/font/css/font-awesome.min.css" />
-      
-    <link href="https://cdn.tutorialjinni.com/simplePagination.js/1.6/simplePagination.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/font/css/font-awesome.min.css"  />
+    <link rel="stylesheet" href="~/lib/pagination/simplePagination.css"  />
 
 </head>
 <body>
@@ -59,18 +58,18 @@
 
     </div>
 
-<footer class="border-top footer">
-    <div class="container">
-       
-            &copy; 2020 - Powered by <font color="green">Init Myanmar</font> 
+    <footer class="border-top footer">
+        <div class="container">
+
+            &copy; 2020 - Powered by <font color="green">Init Myanmar</font>
             <a type="button" class="btn btn-social-icon btn-facebook" style=" margin-top: 10px; color: blue; border-color:blue; border-style: solid; float: right;" href="https://www.facebook.com/KNCES.mm/"><i class="fa fa-facebook"></i></a>
-       
-    </div>
-</footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdn.tutorialjinni.com/simplePagination.js/1.6/jquery.simplePagination.min.js"></script>
-     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js" ></script>
+    <script src="~/lib/pagination/jquery.simplePagination.js" ></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" ></script>
+    <script src="~/js/site.js" asp-append-version="true" ></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

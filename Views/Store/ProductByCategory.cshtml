@@ -13,13 +13,13 @@
     {
         <div class="col-lg-3 col-md-6 mb-4 list-item" data-role="name">
             <div class="card h-100 border-warning">
-                <a asp-action="Details" asp-route-id="@item.Id"><img class="card-img-top img-fluid" loading="lazy" src="@("~/images/" + item.ImagePath)" asp-append-version="true"></a>
+                <a asp-action="Details" asp-route-id="@item.Id"><img class="card-img-top img-fluid"  loading="lazy" alt="@(item.ImagePath)" src=" @("~/images/" + item.ImagePath)" asp-append-version="true"></a>
                 <div class="card-body">
                     <h5 class="card-title">
                         <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
                     </h5>
                     <p class="card-text">Code : @Html.DisplayFor(modelItem => item.PCode)</p>
-                    <h5>Price : @Html.DisplayFor(modelItem => item.SellPrice) MMK</h5>
+                    <h6>Price : @Html.DisplayFor(modelItem => item.SellPrice) MMK</h6>
 
                 </div>
                 <div class="card-footer">
@@ -42,7 +42,7 @@
             $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
                 $('div[data-role = "name"]').filter(function () {
-                    $(this).toggle($(this).find('h4').text().toLowerCase().indexOf(value) > -1)
+                    $(this).toggle($(this).find('h5').text().toLowerCase().indexOf(value) > -1)
                 });
             });
 
