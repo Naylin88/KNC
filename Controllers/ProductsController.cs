@@ -12,6 +12,7 @@ using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using System.Drawing;
 
 namespace InitCMS.Controllers
 {
@@ -141,15 +142,25 @@ namespace InitCMS.Controllers
         private string UploadedFile(ProductViewModel model)
         {
             string uniqueFileName = null;
+            int width = 210;
+            int height = 210;        
 
             if (model.Photo != null)
             {
                 string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using var fileStream = new FileStream(filePath, FileMode.Create);
-                model.Photo.CopyTo(fileStream);
-                fileStream.Dispose();
+                //using var fileStream = new FileStream(filePath, FileMode.Create);
+                //model.Photo.CopyTo(fileStream);
+                //fileStream.Dispose();
+                Image image = Image.FromStream(model.Photo.OpenReadStream(), true, true);
+                var newImage = new Bitmap(width, height);
+                using (var a = Graphics.FromImage(newImage))
+                {
+                    a.DrawImage(image, 0, 0, width, height);
+                    newImage.Save(filePath);
+                }
+
             }
             return uniqueFileName;
         }
