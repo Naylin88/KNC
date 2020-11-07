@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<InitCMS.Models.User>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "User";
 }
 
-<h1>Index</h1>
+<h1>User List</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 
 <table class="table">
-    <thead>
+    <thead style="background-color: gainsboro">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.UserName)
@@ -35,8 +35,8 @@
                 </td>
 
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.UserId"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.UserId"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 </td>
             </tr>
         }

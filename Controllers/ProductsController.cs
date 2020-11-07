@@ -132,7 +132,7 @@ namespace InitCMS.Controllers
               
                 _context.Add(products);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Create));
             }
             ViewData["ProductCategoryID"] = new SelectList(_context.ProductCategory, "Id", "Name", product.ProductCategoryID);
             ViewData["CategoryCatId"] = new SelectList(_context.Category, "CatId", "CatTitle", product.CategoryCatId);
@@ -142,8 +142,8 @@ namespace InitCMS.Controllers
         private string UploadedFile(ProductViewModel model)
         {
             string uniqueFileName = null;
-            int width = 210;
-            int height = 210;        
+            int width = 253;
+            int height = 253;        
 
             if (model.Photo != null)
             {

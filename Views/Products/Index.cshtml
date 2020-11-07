@@ -9,90 +9,78 @@
 <p>
     <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
-<table class="table" id="datatable">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ImagePath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductCategory)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
+<div class="table-responsive">
+    <table class="table" id="datatable">
+        <thead style="background-color: gainsboro">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImagePath)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductCategory)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PurchasePrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SellPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </th>
 
-            <th>
-                @Html.DisplayNameFor(model => model.PurchasePrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SellPrice)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.InStock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sale)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@("~/images/" + item.ImagePath)" asp-append-version="true" width="50" height="50" loading="lazy" />
+                    </td>
+                    <td style="word-break: keep-all;">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductCategory.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.CatTitle)
+                    </td>
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-        <tr>
-            <td>
-                <img src="@("~/images/" + item.ImagePath)" asp-append-version="true" width="50" height="50" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductCategory.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CatTitle)
-            </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PurchasePrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SellPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreatedDate)
+                    </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.PurchasePrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SellPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InStock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sale)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-
-
-            <td>
-                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <a asp-action="Details" asp-route-id="@item.Id"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+                        <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 @section scripts{
     <script type="text/javascript">
         $(document).ready(function () {
@@ -100,7 +88,8 @@
                 dom: 'Bfrtip',
                 buttons: [
                     'copy', 'csv', 'excel', 'print'
-                ]
+                ],
+                columnDefs: [{ "width": "20%","targets":1 }]
             });
         });
     </script>

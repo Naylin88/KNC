@@ -19,6 +19,7 @@ namespace InitCMS.Models
         [DisplayName("Code")]
         [Remote(action: "CheckPCode", controller: "Products")]
         public string PCode { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
         [DisplayName("Cost")]
         [Column(TypeName = "decimal(18,2)")]

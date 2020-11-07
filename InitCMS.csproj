@@ -80,4 +80,8 @@
     <None Include="wwwroot\font\scss\_variables.scss" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Log\" />
+  </ItemGroup>
+
 </Project>

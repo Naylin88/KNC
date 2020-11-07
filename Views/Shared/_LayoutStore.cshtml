@@ -6,10 +6,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/font/css/font-awesome.min.css"  />
-    <link rel="stylesheet" href="~/lib/pagination/simplePagination.css"  />
+    <link rel="stylesheet" href="~/font/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.4/simplePagination.css" integrity="sha512-emkhkASXU1wKqnSDVZiYpSKjYEPP8RRG2lgIxDFVI4f/twjijBnDItdaRh7j+VRKFs4YzrAcV17JeFqX+3NVig==" crossorigin="anonymous" />
 
 </head>
 <body>
@@ -66,10 +67,10 @@
 
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js" ></script>
-    <script src="~/lib/pagination/jquery.simplePagination.js" ></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" ></script>
-    <script src="~/js/site.js" asp-append-version="true" ></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.4/jquery.simplePagination.min.js" integrity="sha512-J4OD+6Nca5l8HwpKlxiZZ5iF79e9sgRGSf0GxLsL1W55HHdg48AEiKCXqvQCNtA1NOMOVrw15DXnVuPpBm2mPg==" crossorigin="anonymous"></script>   
+    <script defer src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

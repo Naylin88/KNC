@@ -5,7 +5,7 @@
     ViewData["Title"] = "Product Category";
 }
 
-<input id="myInput" class="form-control border-warning" type="text" placeholder="Search by Name ..." />
+<input id="myInput" class="form-control border-warning" type="text" placeholder="Search by Name or Code ..." />
 <br />
 
 <div class="row">
@@ -13,7 +13,7 @@
     {
         <div class="col-lg-3 col-md-6 mb-4 list-item" data-role="name">
             <div class="card h-100 border-warning">
-                <a asp-action="Details" asp-route-id="@item.Id"><img class="card-img-top img-fluid"  loading="lazy" alt="@(item.ImagePath)" src=" @("~/images/" + item.ImagePath)" asp-append-version="true"></a>
+                <a asp-action="Details" asp-route-id="@item.Id"><img class="card-img-top img-fluid"  loading="lazy" alt="electronic goods" src=" @("~/images/" + item.ImagePath)" asp-append-version="true"></a>
                 <div class="card-body">
                     <h5 class="card-title">
                         <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
@@ -42,7 +42,7 @@
             $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
                 $('div[data-role = "name"]').filter(function () {
-                    $(this).toggle($(this).find('h5').text().toLowerCase().indexOf(value) > -1)
+                    $(this).toggle($(this).find('h5, p').text().toLowerCase().indexOf(value) > -1)
                 });
             });
 
