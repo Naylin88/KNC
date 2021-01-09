@@ -5,48 +5,65 @@
 <h4>Welcome Dashboard</h4>
 <hr />
 <div class="row">
-    <div class="col-sm-3">
-        <div class="card card border-primary mb-3" style="max-width: 18rem;">
-            <div class="card-header">Products</div>
-            <div class="card-body text-primary">
-                <h4 class="card-title"> @ViewBag.PCount</h4>
+     
+    <div class="col-sm-3 text-center">
+        <a href="@Url.Action("Index","Products")">
+            <div class="card card border-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Products</div>
+                <div class="card-body text-primary">
+                    <h4 class="card-title"> @ViewBag.PCount</h4>
 
+                </div>
             </div>
-        </div>
+        </a>
+    </div>
+   
+
+    <div class="col-sm-3 text-center">
+        <a href="@Url.Action("Index","ProductCategories")">
+            <div class="card card border-warning mb-3" style="max-width: 18rem;">
+                <div class="card-header">Product Categories</div>
+                <div class="card-body text-warning">
+                    <h4 class="card-title">@ViewBag.PCCount</h4>
+                </div>
+            </div>
+            </a>
     </div>
 
-    <div class="col-sm-3">
-        <div class="card card border-warning mb-3" style="max-width: 18rem;">
-            <div class="card-header">Product Categories</div>
-            <div class="card-body text-warning">
-                <h4 class="card-title">@ViewBag.PCCount</h4>
+    <div class="col-sm-3 text-center">
+        <a href="@Url.Action("Index","Reports")">
+            <div class="card card border-danger mb-3" style="max-width: 18rem;">
+                <div class="card-header">Total Orders</div>
+                <div class="card-body text-danger">
+                    <h4 class="card-title">@ViewBag.TotalOrder</h4>
+                </div>
             </div>
-        </div>
+            </a>
     </div>
 
-    <div class="col-sm-3">
-        <div class="card card border-danger mb-3" style="max-width: 18rem;">
-            <div class="card-header">Total Orders</div>
-            <div class="card-body text-danger">
-                <h4 class="card-title">@ViewBag.TotalOrder</h4>
+    <div class="col-sm-3 text-center">
+        <a href="@Url.Action("Index","Reports")">
+            <div class="card card border-success mb-3" style="max-width: 18rem;">
+                <div class="card-header">Today Order</div>
+                <div class="card-body text-success">
+                    <h4 class="card-title">@ViewBag.TodayOrder</h4>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="card card border-success mb-3" style="max-width: 18rem;">
-            <div class="card-header">Today Order</div>
-            <div class="card-body text-success">
-                <h4 class="card-title">@ViewBag.TodayOrder</h4>
+            </a>
+    </div>    
+</div><!--End of row-->
+
+<div class="row">
+    
+    <div class="col-sm-3 text-center">
+        
+            <div class="card card border-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Customer Registrations</div>
+                <div class="card-body text-secondary">
+                    <h4 class="card-title">@ViewBag.Customer</h4>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="card card border-secondary mb-3" style="max-width: 18rem;">
-            <div class="card-header">Customer Registrations</div>
-            <div class="card-body text-secondary">
-                <h4 class="card-title">@ViewBag.Customer</h4>
-            </div>
-        </div>
+           
     </div>
 
 </div>

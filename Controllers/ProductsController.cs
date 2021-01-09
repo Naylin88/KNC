@@ -75,7 +75,6 @@ namespace InitCMS.Controllers
         {
             if (HttpContext.Session.GetString("SessionEmail") == null)
             {
-
                 return RedirectToAction("Login", "Admin");
             }
             ViewData["ProductCategoryID"] = new SelectList(_context.ProductCategory, "Id", "Name");

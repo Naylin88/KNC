@@ -45,16 +45,20 @@ namespace InitCMS.Controllers
                          {
                              p.PCode,
                              p.Name,
-                             o.FirstName,
+                             Names = string.Join( o.FirstName," ", o.LastName),
                              od.Quantity,
                              od.Price,
+                             Address = string.Join(o.AddressLine1," ",o.AddressLine2),
+                             o.PhoneNumber,
                              o.OrderPlaced
                          }).ToList();
 
             foreach (var item in q)
             {
                 DailySaleViewModel DsaleVM = new DailySaleViewModel();
-                DsaleVM.CustomerName = item.FirstName;
+                DsaleVM.CustomerName = item.Names;
+                DsaleVM.Address = item.Address;
+                DsaleVM.Phone = item.PhoneNumber;
                 DsaleVM.PCode = item.PCode;
                 DsaleVM.ProductName = item.Name;
                 DsaleVM.Qty = item.Quantity;
@@ -88,7 +92,9 @@ namespace InitCMS.Controllers
                      {
                          p.PCode,
                          p.Name,
-                         o.FirstName,
+                         Names = string.Join(o.FirstName, " ", o.LastName),
+                         Address = string.Join(o.AddressLine1, " ", o.AddressLine2),
+                         o.PhoneNumber,
                          od.Quantity,
                          od.Price,
                          o.OrderPlaced
@@ -97,7 +103,9 @@ namespace InitCMS.Controllers
             foreach (var item in q)
             {
                 MonthlySaleViewModel MsaleVM = new MonthlySaleViewModel();
-                MsaleVM.CustomerName = item.FirstName;
+                MsaleVM.CustomerName = item.Names;
+                MsaleVM.Address = item.Address;
+                MsaleVM.Phone = item.PhoneNumber;
                 MsaleVM.PCode = item.PCode;
                 MsaleVM.ProductName = item.Name;
                 MsaleVM.Qty = item.Quantity;
